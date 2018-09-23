@@ -1,0 +1,38 @@
+--Preprocessing--
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 19
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 62
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 19
+}
+--Feature Extraction--
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 272
+}
+MaxPool {
+}
+MaxPool {
+}
+ConvolutionRect {
+	out_chan : int, 250
+	relu : bool, false
+	filter_size_x : int, 3
+	filter_size_y : int, 1
+}
+--Postprocessing--
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 64
+}

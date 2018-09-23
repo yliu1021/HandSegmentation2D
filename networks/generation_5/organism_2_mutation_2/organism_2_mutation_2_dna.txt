@@ -1,0 +1,87 @@
+--Preprocessing--
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 2
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 2
+}
+--Feature Extraction--
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, false
+	out_chan : int, 478
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 250
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 250
+}
+MaxPool {
+}
+MaxPool {
+}
+ConvolutionSquare {
+	filter_size : int, 5
+	relu : bool, true
+	out_chan : int, 250
+}
+MaxPool {
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 250
+}
+ConvolutionSquare {
+	filter_size : int, 4
+	relu : bool, true
+	out_chan : int, 250
+}
+MaxPool {
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 498
+}
+ConvolutionRect {
+	out_chan : int, 630
+	relu : bool, false
+	filter_size_x : int, 2
+	filter_size_y : int, 4
+}
+ConvolutionSquare {
+	filter_size : int, 4
+	relu : bool, true
+	out_chan : int, 328
+}
+ConvolutionSquare {
+	filter_size : int, 4
+	relu : bool, true
+	out_chan : int, 250
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, false
+	out_chan : int, 727
+}
+--Postprocessing--
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 34
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 8
+}

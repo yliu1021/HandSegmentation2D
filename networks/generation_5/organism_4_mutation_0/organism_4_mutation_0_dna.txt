@@ -1,0 +1,63 @@
+--Preprocessing--
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 92
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 35
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 51
+}
+--Feature Extraction--
+AveragePool {
+}
+AveragePool {
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 513
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 469
+}
+AveragePool {
+}
+InceptionSimple {
+	intermediate_chan : int, 115
+}
+MaxPool {
+}
+InceptionSimple {
+	intermediate_chan : int, 600
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 675
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 656
+}
+--Postprocessing--
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 13
+}
+DeconvolutionSquare {
+	filter_size : int, 2
+	strides : int, 2
+	relu : bool, true
+	out_chan : int, 54
+}

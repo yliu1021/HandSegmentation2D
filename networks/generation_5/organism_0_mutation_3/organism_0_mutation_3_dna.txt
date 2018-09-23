@@ -1,0 +1,52 @@
+--Preprocessing--
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, true
+	out_chan : int, 2
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, false
+	out_chan : int, 66
+}
+--Feature Extraction--
+MaxPool {
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 250
+}
+MaxPool {
+}
+ConvolutionSquare {
+	filter_size : int, 5
+	relu : bool, true
+	out_chan : int, 250
+}
+MaxPool {
+}
+MobileNetResidual {
+	expansion_factor : int, 6
+	out_chan : int, 209
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 717
+}
+MobileNetBase {
+	expansion_factor : int, 5
+	out_chan : int, 407
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 271
+}
+--Postprocessing--
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, false
+	out_chan : int, 56
+}

@@ -1,0 +1,86 @@
+--Preprocessing--
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 62
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 2
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, false
+	out_chan : int, 2
+}
+--Feature Extraction--
+AveragePool {
+}
+AveragePool {
+}
+InceptionSimple {
+	intermediate_chan : int, 64
+}
+AveragePool {
+}
+MobileNetResidual {
+	expansion_factor : int, 2
+	out_chan : int, 108
+}
+ConvolutionSquare {
+	filter_size : int, 5
+	relu : bool, false
+	out_chan : int, 514
+}
+ConvolutionSquare {
+	filter_size : int, 5
+	relu : bool, false
+	out_chan : int, 408
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, true
+	out_chan : int, 431
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, false
+	out_chan : int, 777
+}
+MaxPool {
+}
+InceptionSimple {
+	intermediate_chan : int, 365
+}
+ConvolutionSquare {
+	filter_size : int, 2
+	relu : bool, false
+	out_chan : int, 647
+}
+MobileNetResidual {
+	expansion_factor : int, 4
+	out_chan : int, 293
+}
+ConvolutionSquare {
+	filter_size : int, 1
+	relu : bool, false
+	out_chan : int, 747
+}
+--Postprocessing--
+DeconvolutionSquare {
+	filter_size : int, 3
+	strides : int, 8
+	relu : bool, false
+	out_chan : int, 2
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, false
+	out_chan : int, 20
+}
+ConvolutionSquare {
+	filter_size : int, 3
+	relu : bool, true
+	out_chan : int, 8
+}
